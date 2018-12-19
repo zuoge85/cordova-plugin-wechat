@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+console.log("debug");
 module.exports = function (context) {
     var path        = context.requireCordovaModule('path'),
         fs          = context.requireCordovaModule('fs'),
@@ -39,9 +39,10 @@ module.exports = function (context) {
         return ;
     }
 
+
     var targetDir  = path.join(projectRoot, "platforms", "android", "src", packageName.replace(/\./g, path.sep), "wxapi");
         targetFiles = ["EntryActivity.java", "WXEntryActivity.java", "WXPayEntryActivity.java"];
-
+    console.log("debug",targetDir);
     if (['after_plugin_add', 'after_plugin_install'].indexOf(context.hook) === -1) {
         // remove it?
         targetFiles.forEach(function (f) {
