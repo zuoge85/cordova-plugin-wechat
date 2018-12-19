@@ -7,6 +7,7 @@ module.exports = function (context) {
         projectRoot = context.opts.projectRoot,
         plugins     = context.opts.plugins || [];
 
+    console.log("debug",plugins);
     // The plugins array will be empty during platform add
     if (plugins.length > 0 && plugins.indexOf('cordova-plugin-wechat') === -1) {
         return ;
