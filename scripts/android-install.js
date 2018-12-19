@@ -41,7 +41,7 @@ module.exports = function (context) {
   }
 
 
-  var targetDir = path.join(projectRoot, "platforms", "android","app", "src","main", packageName.replace(/\./g, path.sep), "wxapi");
+  var targetDir = path.join(projectRoot, "platforms", "android","app", "src","main","java", packageName.replace(/\./g, path.sep), "wxapi");
   targetFiles = ["EntryActivity.java", "WXEntryActivity.java", "WXPayEntryActivity.java"];
   console.log("debug", targetDir);
   if (['after_plugin_add', 'after_plugin_install'].indexOf(context.hook) === -1) {
