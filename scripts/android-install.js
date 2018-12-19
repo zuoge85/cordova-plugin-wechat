@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-console.log("debug");
 module.exports = function (context) {
   var path = context.requireCordovaModule('path'),
     fs = context.requireCordovaModule('fs'),
@@ -7,16 +6,13 @@ module.exports = function (context) {
     projectRoot = context.opts.projectRoot,
     plugins = context.opts.plugins || [];
 
-  console.log("debug", plugins);
   // The plugins array will be empty during platform add
   var hasWechatPlugin = plugins.findIndex(function (p) {
     return p.indexOf('cordova-plugin-wechat') > -1;
   });
-  console.log("debug", hasWechatPlugin);
   if (plugins.length > 0 && hasWechatPlugin) {
     return;
   }
-  console.log("debug1", plugins);
   var ConfigParser = null;
   try {
     ConfigParser = context.requireCordovaModule('cordova-common').ConfigParser;
@@ -45,7 +41,7 @@ module.exports = function (context) {
   }
 
 
-  var targetDir = path.join(projectRoot, "platforms", "android", "src", packageName.replace(/\./g, path.sep), "wxapi");
+  var targetDir = path.join(projectRoot, "platforms", "android","app", "src", packageName.replace(/\./g, path.sep), "wxapi");
   targetFiles = ["EntryActivity.java", "WXEntryActivity.java", "WXPayEntryActivity.java"];
   console.log("debug", targetDir);
   if (['after_plugin_add', 'after_plugin_install'].indexOf(context.hook) === -1) {
