@@ -9,11 +9,14 @@ module.exports = function (context) {
 
   console.log("debug", plugins);
   // The plugins array will be empty during platform add
-
-  if (plugins.length > 0 && plugins.findIndex(p => p.indexOf('cordova-plugin-wechat') > -1)) {
+  var hasWechatPlugin = plugins.findIndex(function (p) {
+    return p.indexOf('cordova-plugin-wechat') > -1;
+  });
+  console.log("debug", hasWechatPlugin);
+  if (plugins.length > 0 && hasWechatPlugin) {
     return;
   }
-
+  console.log("debug1", plugins);
   var ConfigParser = null;
   try {
     ConfigParser = context.requireCordovaModule('cordova-common').ConfigParser;
